@@ -1,35 +1,22 @@
 import _ from 'lodash';
-import './style.css';
-// import { print } from './print';
+import numRef from './ref.json';
 
-function component() {
-    const element = document.createElement('div');
-    element.innerHTML = _.join(['Hello', 'Webpack'], ' ');
-    element.classList.add('hello');
-
-    /* const btn = document.createElement('button');
-    btn.innerHTML = 'Click me and check the console';
-    btn.addEventListener('click', printMe);
-
-    element.appendChild(btn); */
-    // element.addEventListener('click', print);
-
-    return element;
+export function numToWord(num) {
+    return _.reduce(
+        numRef,
+        (accum, ref) => {
+        return ref.num === num ? ref.word : accum;
+        },
+        ''
+    );
 }
 
-document.body.appendChild(component());
-
-/* const getComponent = async () => {
-    const element = document.createElement('div');
-    try {
-        const { default: _ } = await import('lodash');
-        element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-        return element;
-    } catch (error) {
-        return 'An error occurred while loading the component';
-    }
+export function wordToNum(word) {
+    return _.reduce(
+        numRef,
+        (accum, ref) => {
+        return ref.word === word && word.toLowerCase() ? ref.num : accum;
+        },
+        -1
+    );
 }
-
-getComponent().then(component => {
-    document.body.appendChild(component);
-}); */
