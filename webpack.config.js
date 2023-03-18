@@ -4,9 +4,19 @@ const yaml = require('yamljs');
 const json5 = require('json5');
 
 const HtmlWepbackPlugin = require('html-webpack-plugin');
-const title = 'Output Management';
+
+const assigned = {
+    mode: 'development',
+    devtool: 'inline-source-map',
+};
+const title = 'Development';
 
 module.exports = {
+    ...assigned,
+    devServer: {
+        static: './dist',
+        port: 8888,
+    },
     entry: {
         index: './src/index.js',
         print: './src/print.js',
@@ -20,6 +30,7 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
+        publicPath: '/',
     },
     module: {
         rules: [
