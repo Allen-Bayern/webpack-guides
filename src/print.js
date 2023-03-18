@@ -1,5 +1,3 @@
-const printMe = () => {
-    console.log('I get called from print.js!');
-}
-
-export default printMe;
+export const print = text => {
+    console.log(text);
+};

@@ -9,7 +9,7 @@ const assigned = {
     mode: 'development',
     devtool: 'inline-source-map',
 };
-const title = 'Development';
+const title = 'Caching';
 
 module.exports = {
     ...assigned,
@@ -36,16 +36,24 @@ module.exports = {
         }),
     ],
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
         publicPath: '/',
     },
     optimization: {
-        // runtimeChunk: 'single',
-        // splitChunks: {
-        //     chunks: 'all'
-        // }
+        moduleIds: 'deterministic',
+        runtimeChunk: 'single',
+        splitChunks: {
+            // chunks: 'all',
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                },
+            },
+        },
     },
     module: {
         rules: [

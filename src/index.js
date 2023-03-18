@@ -1,24 +1,25 @@
-/* import _ from 'lodash';
+import _ from 'lodash';
 import './style.css';
-import printMe from './print';
+// import { print } from './print';
 
 function component() {
     const element = document.createElement('div');
     element.innerHTML = _.join(['Hello', 'Webpack'], ' ');
     element.classList.add('hello');
 
-    const btn = document.createElement('button');
+    /* const btn = document.createElement('button');
     btn.innerHTML = 'Click me and check the console';
     btn.addEventListener('click', printMe);
 
-    element.appendChild(btn);
+    element.appendChild(btn); */
+    // element.addEventListener('click', print);
 
     return element;
 }
 
-document.body.appendChild(component()); */
+document.body.appendChild(component());
 
-const getComponent = async () => {
+/* const getComponent = async () => {
     const element = document.createElement('div');
     try {
         const { default: _ } = await import('lodash');
@@ -31,4 +32,4 @@ const getComponent = async () => {
 
 getComponent().then(component => {
     document.body.appendChild(component);
-});
+}); */
