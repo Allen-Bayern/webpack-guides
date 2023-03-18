@@ -3,11 +3,23 @@ const toml = require('toml');
 const yaml = require('yamljs');
 const json5 = require('json5');
 
+const HtmlWepbackPlugin = require('html-webpack-plugin');
+const title = 'Output Management';
+
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        index: './src/index.js',
+        print: './src/print.js',
+    },
+    plugins: [
+        new HtmlWepbackPlugin({
+            title,
+        }),
+    ],
     output: {
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
     module: {
         rules: [
