@@ -1,4 +1,4 @@
-import _ from 'lodash';
+/* import _ from 'lodash';
 import './style.css';
 import printMe from './print';
 
@@ -16,4 +16,19 @@ function component() {
     return element;
 }
 
-document.body.appendChild(component());
+document.body.appendChild(component()); */
+
+const getComponent = async () => {
+    const element = document.createElement('div');
+    try {
+        const { default: _ } = await import('lodash');
+        element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+        return element;
+    } catch (error) {
+        return 'An error occurred while loading the component';
+    }
+}
+
+getComponent().then(component => {
+    document.body.appendChild(component);
+});

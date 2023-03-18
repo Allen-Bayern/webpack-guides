@@ -18,8 +18,17 @@ module.exports = {
         port: 8888,
     },
     entry: {
+        // index: {
+        //     import: './src/index.js',
+        //     dependOn: 'shared',
+        // },
+        // print: './src/print.js',
+        // another: {
+        //     import: './src/another-module.js',
+        //     dependOn: 'shared',
+        // },
+        // shared: 'lodash',
         index: './src/index.js',
-        print: './src/print.js',
     },
     plugins: [
         new HtmlWepbackPlugin({
@@ -31,6 +40,12 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
         publicPath: '/',
+    },
+    optimization: {
+        // runtimeChunk: 'single',
+        // splitChunks: {
+        //     chunks: 'all'
+        // }
     },
     module: {
         rules: [
