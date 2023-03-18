@@ -1,4 +1,4 @@
-const path = require('path');
+/* const path = require('path');
 
 module.exports = (env) => {
   // Use env.<YOUR VARIABLE> here:
@@ -12,4 +12,18 @@ module.exports = (env) => {
       path: path.resolve(__dirname, 'dist'),
     },
   };
-};
+}; */
+
+const path = require('path');
+
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+    mode: 'development',
+    optimization: {
+        usedExports: true,
+    }
+}

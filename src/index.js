@@ -1,22 +1,14 @@
-import _ from 'lodash';
-import numRef from './ref.json';
+import { cube } from './math';
 
-export function numToWord(num) {
-    return _.reduce(
-        numRef,
-        (accum, ref) => {
-        return ref.num === num ? ref.word : accum;
-        },
-        ''
-    );
-}
+const component = () => {
+    const element = document.createElement('pre');
 
-export function wordToNum(word) {
-    return _.reduce(
-        numRef,
-        (accum, ref) => {
-        return ref.word === word && word.toLowerCase() ? ref.num : accum;
-        },
-        -1
-    );
-}
+    element.innerHTML = [
+        'Hello webpack!',
+        '5 cubed is equal to ' + cube(5)
+    ].join('\n\n');
+
+    return element;
+};
+
+document.body.appendChild(component());

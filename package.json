@@ -1,5 +1,6 @@
 {
   "name": "webpack-guides",
+  "sideEffects": false,
   "version": "1.0.0",
   "description": "See: https://webpack.js.org/guides/",
   "main": "dist/webpack-numbers.js",
